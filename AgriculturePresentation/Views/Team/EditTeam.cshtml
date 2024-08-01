@@ -1,14 +1,15 @@
 ﻿@model EntityLayer.Concrete.Team
 @{
-    ViewData["Title"] = "AddTeam";
+    ViewData["Title"] = "EditTeam";
     Layout = "~/Views/_AdminLayout.cshtml";
 }
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Yeni Takım Arkadaşı Kaydı</h4>
+            <h4 class="card-title">Takım Arkadaşı Bilgi Güncelleme Sayfası</h4>
             <form class="forms-sample" method="post">
                 <div class="form-group">
+                    @Html.HiddenFor(x => x.TeamID)
                     <label for="exampleInputName1">Adı Soyadı</label>
                     <span asp-validation-for="PersonName" class="text-danger"></span>
                     <input type="text" class="form-control" placeholder="adsoyad" asp-for="PersonName">
@@ -16,16 +17,16 @@
                 <div class="form-group">
                     <label for="exampleInputEmail3">Görevi</label>
                     <span asp-validation-for="Title" class="text-danger"></span>
-                    <input type="text" class="form-control" placeholder="Görev"  asp-for="Title">
+                    <input type="text" class="form-control" placeholder="Görev" asp-for="Title">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">Görsel Yolu</label>
                     <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                    <input type="text" class="form-control"  placeholder="görsel yolu"  asp-for="ImageUrl">
+                    <input type="text" class="form-control" placeholder="görsel yolu" asp-for="ImageUrl">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">Facebook</label>
-                    <input type="text" class="form-control"  placeholder="Facebook linkini giriniz" asp-for="FacebookUrl">
+                    <input type="text" class="form-control" placeholder="Facebook linkini giriniz" asp-for="FacebookUrl">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">Instagram</label>
@@ -33,11 +34,11 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">Twitter</label>
-                    <input type="text" class="form-control"  placeholder="Twitter linkini giriniz" asp-for="TwitterUrl">
+                    <input type="text" class="form-control" placeholder="Twitter linkini giriniz" asp-for="TwitterUrl">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">Web Sitesi</label>
-                    <input type="text" class="form-control"  placeholder="Websitesi varsa linkini giriniz" asp-for="WebsiteUrl">
+                    <input type="text" class="form-control" placeholder="Websitesi varsa linkini giriniz" asp-for="WebsiteUrl">
                 </div>
                 <button type="submit" class="btn btn-outline-info">Kaydet</button>
                 <button class="btn btn-light">Vazgeç</button>

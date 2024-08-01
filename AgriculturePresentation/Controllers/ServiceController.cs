@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AgriculturePresentation.Controllers
 {
-    public class TestController : Controller
+    public class ServiceController : Controller
     {
         private readonly IServiceService _serviceService;
 
-        public TestController(IServiceService serviceService)
+        public ServiceController(IServiceService serviceService)
         {
             _serviceService = serviceService;
         }
@@ -20,11 +20,13 @@ namespace AgriculturePresentation.Controllers
             var values = _serviceService.GetListAll();
             return View(values);
         }
+
         [HttpGet]
         public IActionResult AddService()
         {
             return View(new ServiceAddViewModel());
         }
+
         [HttpPost]
         public IActionResult AddService(ServiceAddViewModel model)
         {
@@ -34,11 +36,42 @@ namespace AgriculturePresentation.Controllers
                 {
                     Title = model.Title,
                     Image = model.Image,
-                    Description = model.Description,
+                    Description = model.Description
                 });
                 return RedirectToAction("Index");
             }
             return View(model);
+        }
+
+        public IActionResult DeleteService(int id)
+        {
+            var values = _serviceService.GetById(id);
+            _serviceService.Delete(values);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult EditService(int id)
+        {
+            var values = _serviceService.GetById(id);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult EditService(Service service)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Optionally log the errors or inspect the ModelState to see what went wrong.
+                return View(service);
+            }
+            _serviceService.Update(service);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Deneme()
+        {
+            return View();
         }
     }
 }

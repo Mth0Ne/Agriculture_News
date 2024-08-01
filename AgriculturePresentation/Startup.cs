@@ -25,6 +25,8 @@ namespace AgriculturePresentation
         {
             services.AddScoped<IServiceService, ServiceManager>();
             services.AddScoped<IServiceDal, EfServiceDal>();
+            services.AddScoped<ITeamService, TeamManager>();
+            services.AddScoped<ITeamDal, EfTeamDal>();
             services.AddDbContext<AgricultureContext>();
             services.AddControllersWithViews();
         }

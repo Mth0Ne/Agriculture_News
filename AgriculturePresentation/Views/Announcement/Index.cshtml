@@ -1,9 +1,11 @@
-﻿@using EntityLayer.Concrete
+﻿﻿@using EntityLayer.Concrete
 @model List<Announcement>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/_AdminLayout.cshtml";
 }
+
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -29,14 +31,13 @@
                                 <td>@item.Title</td>
                                 <td>@item.Date</td>
                                 <td><a href="/Announcement/DeleteAnnouncement/@item.AnnouncementID" class="btn btn-outline-danger">Sil</a></td>
-                                <td><a href="/Announcement/EditAnnouncement/@item.AnnouncementID" class="btn btn-outline-warning">Güncelle</a></td>
-                                <td><a href="/Announcement/EditAnnouncement/@item.AnnouncementID" class="btn btn-outline-warning">Aktif Yap</a></td>
-                                <td><a href="/Announcement/EditAnnouncement/@item.AnnouncementID" class="btn btn-outline-secondary">Pasif Yap</a></td>
+                                <td><a href="/Announcement/EditAnnouncement/@item.AnnouncementID" class="btn btn-outline-success">Güncelle</a></td>
+                                <td><a href="/Announcement/ChangeStatusToTrue/@item.AnnouncementID" class="btn btn-outline-warning">Aktif Yap</a></td>
+                                <td><a href="/Announcement/ChangeStatusToFalse/@item.AnnouncementID" class="btn btn-outline-secondary">Pasif Yap</a></td>
                             </tr>
                         }
                     </tbody>
                 </table>
-                <br />
                 <a href="/Announcement/AddAnnouncement" class="btn btn-outline-info">Yeni Duyuru Girişi</a>
             </div>
         </div>

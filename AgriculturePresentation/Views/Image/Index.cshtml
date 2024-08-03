@@ -1,0 +1,20 @@
+﻿@using EntityLayer.Concrete
+@model List<Image>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+<table>
+    <tr>
+        <th>#</th>
+        <th>Titlee</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ImageID</td>
+            <td>@item.Title</td>
+        </tr>
+    }
+</table>
+

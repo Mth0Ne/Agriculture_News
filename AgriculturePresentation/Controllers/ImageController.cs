@@ -5,27 +5,22 @@ namespace AgriculturePresentation.Controllers
 {
     public class ImageController : Controller
     {
-        private readonly IImageService _ımageService;
+        private readonly IImageService _imageService;
 
-        public ImageController(IImageService ımageService)
+        public ImageController(IImageService imageService)
         {
-            _ımageService = ımageService;
+            _imageService = imageService;
         }
 
         public IActionResult Index()
         {
-            var values = _ımageService.GetListAll();
+            var values = _imageService.GetListAll();
             return View(values);
         }
         [HttpGet]
         public IActionResult AddService()
         {
-
-        }
-        [HttpPost]
-        public IActionResult AddService()
-        {
-
+            return View();  
         }
     }
 }

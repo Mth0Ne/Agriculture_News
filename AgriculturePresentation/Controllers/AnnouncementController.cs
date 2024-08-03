@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace AgriculturePresentation.Controllers
 {
@@ -19,13 +20,15 @@ namespace AgriculturePresentation.Controllers
             return View(values);
         }
         [HttpGet]
-        public IActionResult AddAnnnouncement()
+        public IActionResult AddAnnouncement()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult AddAnnnouncement(Announcement announcement)
+        public IActionResult AddAnnouncement(Announcement announcement)
         {
+            announcement.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
+            announcement.Status = false;
             _announcementService.Insert(announcement);
             return RedirectToAction("Index");
         }
@@ -52,6 +55,16 @@ namespace AgriculturePresentation.Controllers
                 return View(announcement);
             }
             _announcementService.Update(announcement);
+            return RedirectToAction("Index");
+        }
+        public IActionResult ChangeStatusToTrue(int id)
+        {
+            _announcementService.AnnouncementStatusToTrue(id);
+            return RedirectToAction("Index");
+        }
+        public IActionResult ChangeStatusToFalse(int id)
+        {
+            _announcementService.AnnouncementStatusToFalse(id);
             return RedirectToAction("Index");
         }
     }

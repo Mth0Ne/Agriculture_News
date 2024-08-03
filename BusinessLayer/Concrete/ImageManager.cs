@@ -11,36 +11,36 @@ namespace BusinessLayer.Concrete
 {
     public class ImageManager : IImageService
     {
-        private readonly IImageDal _ımageDal;
+        private readonly IImageDal _imageDal;
 
         public ImageManager(IImageDal ımageDal)
         {
-            _ımageDal = ımageDal;
+            _imageDal = ımageDal;
         }
 
         public void Delete(Image t)
         {
-            _ımageDal.Delete(t);
+            _imageDal.Delete(t);
         }
 
         public Image GetById(int id)
         {
-            return _ımageDal.GetById(id);
+            return _imageDal.GetById(id);
         }
 
         public List<Image> GetListAll()
         {
-            return _ımageDal.GetListAll();
+            return _imageDal.GetListAll();
         }
 
         public void Insert(Image t)
         {
-            _ımageDal.Insert(t);
+            _imageDal.Insert(t);
         }
 
         public void Update(Image t)
         {
-            _ımageDal.Update(t);
+            _imageDal.Update(t);
         }
     }
 }
